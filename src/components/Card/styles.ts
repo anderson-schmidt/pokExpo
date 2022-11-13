@@ -4,6 +4,14 @@ type PokemonType = {
   type: string;
 };
 
+export const Container = styled.View`
+  ${({ theme }) => css`
+    background: ${theme.colors.background};
+    padding: 20px;
+    flex: 1;
+  `}
+`;
+
 export const PokemonCard = styled.TouchableOpacity<PokemonType>`
   ${({ theme, type }) => css`
     background-color: ${theme.colors.backgroundCard[type]};
