@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components/native";
 import { TypeName } from ".";
 
+import * as Progresso from 'react-native-progress'
+
 type TypeProps = {
     type: TypeName
 
@@ -119,5 +121,58 @@ export const Title = styled.Text<TypeProps>`
         line-height: 19px;
         padding: 20px;
         color: ${theme.colors.boxType[type]};
+    `}
+`;
+
+export const StatusBar = styled.View`
+    width: 100%;
+    padding: 10px 20px;
+    flex-direction: row;
+    align-items: center;
+`;
+
+export const Attributes = styled.Text`
+    ${({ theme }) => css`
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        width: 110px;
+        text-transform: capitalize;
+        color: ${theme.colors.light_text}
+    `}
+`;
+
+export const AttributeValue = styled.Text`
+    ${({ theme }) => css`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: left;
+        color: ${theme.colors.black};
+        margin-left: 20px;
+        
+    `}
+`;
+
+export const ContentBar = styled.View`
+    margin-left: 20px;
+`;
+
+export const BarraDeProgresso = styled(Progresso.Bar) <TypeProps>`
+
+`;
+
+export const Habilidade = styled.Text`
+    ${({ theme }) => css`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 10px 20px;
+        color: ${theme.colors.light_text};
+        text-transform: capitalize;
+        
     `}
 `;

@@ -105,7 +105,7 @@ export function About() {
         {load ? <>
             <Text style={{ marginTop: 200 }}>Carregando ...</Text>
         </> :
-            <ScrollView style ={{flex: 1, backgroundColor: '#fff'}}>
+            <ScrollView style={{ flex: 1, backgroundColor: '#fff' }}>
                 <S.Header type={pokemon.types[0].type.name}>
                     <S.BackButton onPress={handleGoBack}>
                         <Feather name="chevron-left" size={24} color='#fff' />
@@ -142,12 +142,38 @@ export function About() {
                 </S.Header>
 
                 <S.Container>
-                    <S.Title type = {pokemon.types[0].type.name}>Base Stats</S.Title>
+                    <S.Title type={pokemon.types[0].type.name}>Base Stats</S.Title>
+
+                    {
+                        pokemon.stats.map(attribute =>
+                            <S.StatusBar key={attribute.stat.name}>
+                                <S.Attributes> {attribute.stat.name} </S.Attributes>
+
+                                <S.AttributeValue> {attribute.base_stat} </S.AttributeValue>
+
+                                <S.ContentBar>
+                                    <S.BarraDeProgresso
+                                        type={pokemon.types[0].type.name}
+                                        borderWidth={0}
+                                        progress={100}
+                                        width={attribute.base_stat}
+                                        color={pokemon.color}
+                                    />
+                                </S.ContentBar>
+
+                            </S.StatusBar>
+                        )
+                    }
+
+                    <S.Title type={pokemon.types[0].type.name}>Abilities</S.Title>
+
+                    {pokemon.abilities.map(currentAbility => <S.Habilidade>
+                        {currentAbility.ability.name}
+                    </S.Habilidade>)}
+
                 </S.Container>
 
             </ScrollView>
         }
     </>
-
-
 };

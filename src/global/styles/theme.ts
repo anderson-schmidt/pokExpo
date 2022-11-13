@@ -3,6 +3,7 @@ export default {
     background: "#ffffff",
     backgroundWater: "#58ABF6",
     text_white: "#ffffff",
+    black: "#000000",
 
     types: {
       water: "#4A90DA",
