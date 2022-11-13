@@ -4,7 +4,7 @@ import theme from "../../global/styles/theme";
 export const Container = styled.View`
     ${({ theme }) => css`
         flex: 1;
-        background-color: ${theme.colors.backgroundWater};
+        background-color: ${theme.colors.red};
     `}
 `;
 
@@ -18,7 +18,7 @@ export const WrapperAnimation = styled.View`
     ${({ theme }) => css`
     width: 200px;
     height: 300px;
-    background-color: ${theme.colors.types.water};
+    background-color: ${theme.colors.orange};
     border-radius: 100px;
 
     justify-content: center;
@@ -48,6 +48,7 @@ export const Footer = styled.View`
 export const Title = styled.Text`
     ${({ theme }) => css`
         font-size: 40px;
+        font-weight: bold;
         color: ${theme.colors.text_white};
         margin-top: 20px;
     `}
@@ -56,7 +57,7 @@ export const Title = styled.Text`
 export const SubTitle = styled.Text`
     ${({ theme }) => css`
         margin-top: 20px;
-        font-size: 16px;
+        font-size: 18px;
         color: ${theme.colors.text_white}
     `}
 `

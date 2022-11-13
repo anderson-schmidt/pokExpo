@@ -4,7 +4,7 @@ export const Container = styled.TouchableOpacity`
     ${({ theme }) => css`
         width: 100%;
         height: 50px;
-        background-color: ${theme.colors.types.water};
+        background-color: ${theme.colors.red};
 
         justify-content: center;
         align-items: center;
@@ -14,7 +14,8 @@ export const Container = styled.TouchableOpacity`
 
 export const Title = styled.Text`
     ${({ theme }) => css`
-        font-size: 14px;
+        font-size: 18px;
+        font-weight: bold;
         color: ${theme.colors.text_white};
    `}
 `;
