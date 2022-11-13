@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { AppRegistry, FlatList, Text } from "react-native";
 import { Card, Pokemon, PokemonType } from "../../components/Card";
-import { FadeAnimation } from "../../components/FadeAnimation";
+import {useNavigation} from '@react-navigation/native'
+
+import pokeballHeader from '../../assests/img/pokeball.png'
 import api from "../../service/api";
 
 import * as S from './styles';
@@ -14,7 +16,15 @@ type Request = {
 
 export function Home() {
 
-    const[pokemons, setPokemons] = useState<Pokemon[]>([])
+    const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+
+    const {navigate} = useNavigation()
+
+    function handleNavigation(pokemonId: number){
+         navigate('About' , {
+            pokemonId,
+         })
+    }
 
     useEffect(() => {
         async function getAllPokemons() {
@@ -22,7 +32,7 @@ export function Home() {
             const { results } = response.data;
 
             const payloadPokemons = await Promise.all(
-                results.map(async (pokemon: Pokemon ) => {
+                results.map(async (pokemon: Pokemon) => {
                     const { id, types } = await getMoreInfo(pokemon.url)
 
                     return {
@@ -54,14 +64,23 @@ export function Home() {
 
     return <S.Container>
 
-        <FlatList 
-        data = {pokemons}
-        keyExtractor = {pokemon => pokemon.id.toString()}
-        renderItem = {({item: pokemon})=> (
-            <FadeAnimation>
-                <Card data = {pokemon} />
-            </FadeAnimation>
-        )}
+        <FlatList
+            ListHeaderComponent={
+                <>
+                    <S.Header source={pokeballHeader} />
+                    <S.Title>Pokédex</S.Title>
+                </>
+            }
+            contentContainerStyle={{
+                paddingHorizontal: 20,
+            }}
+            data={pokemons}
+            keyExtractor={pokemon => pokemon.id.toString()}
+            renderItem={({ item: pokemon }) => (
+
+                <Card data={pokemon} onPress ={ () => handleNavigation(pokemon.id)} />
+
+            )}
         />
     </S.Container>
 
