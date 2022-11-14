@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { Alert, ScrollView, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons'
+import AnimatedLottieView from "lottie-react-native";
 
 import api from '../../service/api';
 import { useTheme } from 'styled-components';
@@ -9,6 +10,8 @@ import circle from '../../assests/img/circle.png';
 import dots from '../../assests/img/dots.png';
 import * as S from './style';
 import { FadeAnimation } from '../../components/FadeAnimation';
+
+import loadingAnimation from './loading.json'
 
 
 type RouteParams = {
@@ -37,8 +40,17 @@ export type TypeName =
     | 'normal'
     | 'bug'
     | 'flying'
-    | 'eletric'
-    | 'ground';
+    | 'electric'
+    | 'ground'
+    | 'fairy'
+    | 'fighting'
+    | 'psychic'
+    | 'rock'
+    | 'ghost'
+    | 'ice'
+    | 'dragon'
+    | 'dark'
+    | 'steel'
 
 type PokemonType = {
     type: {
@@ -103,7 +115,10 @@ export function About() {
 
     return <>
         {load ? <>
-            <Text style={{ marginTop: 200 }}>Carregando ...</Text>
+            <S.Loading>
+                <AnimatedLottieView style={{ width: 200 }} autoPlay source={loadingAnimation} loop />
+                <Text >Carregando ...</Text>
+            </S.Loading>
         </> :
             <ScrollView style={{ flex: 1, backgroundColor: '#fff' }}>
                 <S.Header type={pokemon.types[0].type.name}>
@@ -172,7 +187,6 @@ export function About() {
                     </S.Habilidade>)}
 
                 </S.Container>
-
             </ScrollView>
         }
     </>

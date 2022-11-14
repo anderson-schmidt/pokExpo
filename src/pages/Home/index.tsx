@@ -28,7 +28,7 @@ export function Home() {
 
     useEffect(() => {
         async function getAllPokemons() {
-            const response = await api.get('/pokemon')
+            const response = await api.get('/pokemon?limit=905&offset=0')
             const { results } = response.data;
 
             const payloadPokemons = await Promise.all(

@@ -156,6 +156,12 @@ export const AttributeValue = styled.Text`
     `}
 `;
 
+export const Loading = styled.View`
+    justify-content: center;
+    align-items: center;
+    margin-top: 300px;
+    `;
+
 export const ContentBar = styled.View`
     margin-left: 20px;
 `;

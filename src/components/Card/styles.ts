@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components/native";
+import { TypeName } from "../../pages/About";
 
-type PokemonType = {
-  type: string;
-};
+type TypeProps = {
+  type: TypeName
+
+}
 
 export const Container = styled.View`
   ${({ theme }) => css`
@@ -12,7 +14,7 @@ export const Container = styled.View`
   `}
 `;
 
-export const PokemonCard = styled.TouchableOpacity<PokemonType>`
+export const PokemonCard = styled.TouchableOpacity<TypeProps>`
   ${({ theme, type }) => css`
     background-color: ${theme.colors.backgroundCard[type]};
     border-radius: 10px;
@@ -58,7 +60,7 @@ export const PokemonContentType = styled.View`
   flex-direction: row;
 `;
 
-export const PokemonType = styled.View<PokemonType>`
+export const PokemonType = styled.View<TypeProps>`
   ${({ theme, type }) => css`
     background-color: ${theme.colors.boxType[type]};
     padding: 5px;
